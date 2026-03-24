@@ -1,0 +1,32 @@
+openai:
+  # api_key: loaded from OPENAI_API_KEY env var
+  model: deepseek-chat
+  # base_url: null
+
+tts:
+  provider: edge-tts            # openai | edge-tts
+  voice: alloy                  # OpenAI voices: alloy/echo/fable/onyx/nova/shimmer
+  model: tts-1                  # tts-1 (fast) | tts-1-hd (quality)
+  edge_voice: zh-CN-XiaoxiaoNeural   # edge-tts voice (used when provider=edge-tts)
+
+video_gen:
+  provider: runway              # runway | kling (future)
+  # api_key: loaded from RUNWAYML_API_SECRET env var
+  model: gen4.5                  # gen4.5 | gen3a_turbo | veo3 | veo3.1
+  polling_interval: 10          # seconds between status checks
+
+output:
+  dir: output
+  resolution: "1920x1080"
+  fps: 30
+  aspect_ratio: "16:9"         # 16:9 | 9:16 | 1:1
+
+pipeline:
+  language: zh                  # zh | en
+  max_scenes: 8
+  concurrent_tasks: 3
+
+composition:
+  transition_duration: 0.5      # seconds of overlap between scenes
+  subtitle_font_size: 24
+  background_color: black       # fallback background when no video clip
